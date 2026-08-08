@@ -1,0 +1,145 @@
+[gd_scene load_steps=13 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/explore_area.gd" id="1_explore"]
+[ext_resource type="PackedScene" path="res://scenes/world/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" path="res://scenes/world/encounter.tscn" id="3_encounter"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sky"]
+sky_top_color = Color(0.1, 0.09, 0.2, 1)
+sky_horizon_color = Color(0.4, 0.22, 0.35, 1)
+ground_bottom_color = Color(0.06, 0.05, 0.1, 1)
+ground_horizon_color = Color(0.22, 0.13, 0.22, 1)
+
+[sub_resource type="Sky" id="Sky_explore"]
+sky_material = SubResource("ProceduralSkyMaterial_sky")
+
+[sub_resource type="Environment" id="Environment_explore"]
+background_mode = 2
+sky = SubResource("Sky_explore")
+ambient_light_source = 3
+ambient_light_energy = 0.6
+tonemap_mode = 2
+fog_enabled = true
+fog_light_color = Color(0.2, 0.12, 0.25, 1)
+fog_density = 0.012
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_floor"]
+size = Vector3(40, 1, 40)
+
+[sub_resource type="BoxMesh" id="BoxMesh_floor"]
+size = Vector3(40, 1, 40)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ground"]
+albedo_color = Color(0.16, 0.15, 0.22, 1)
+roughness = 0.9
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wall"]
+size = Vector3(40, 4, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wall"]
+size = Vector3(40, 4, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wall"]
+albedo_color = Color(0.24, 0.16, 0.3, 1)
+roughness = 0.8
+
+[node name="ExploreArea" type="Node3D"]
+script = ExtResource("1_explore")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_explore")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.87, -0.31, 0.38, 0, 0.77, 0.63, -0.49, -0.55, 0.67, 0, 12, 0)
+light_color = Color(1, 0.9, 0.85, 1)
+light_energy = 1.1
+shadow_enabled = true
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_floor")
+
+[node name="Mesh" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_ground")
+
+[node name="WallNorth" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -20)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WallNorth"]
+shape = SubResource("BoxShape3D_wall")
+
+[node name="Mesh" type="MeshInstance3D" parent="WallNorth"]
+mesh = SubResource("BoxMesh_wall")
+surface_material_override/0 = SubResource("StandardMaterial3D_wall")
+
+[node name="WallSouth" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 20)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WallSouth"]
+shape = SubResource("BoxShape3D_wall")
+
+[node name="Mesh" type="MeshInstance3D" parent="WallSouth"]
+mesh = SubResource("BoxMesh_wall")
+surface_material_override/0 = SubResource("StandardMaterial3D_wall")
+
+[node name="WallEast" type="StaticBody3D" parent="."]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 20, 2, 0)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WallEast"]
+shape = SubResource("BoxShape3D_wall")
+
+[node name="Mesh" type="MeshInstance3D" parent="WallEast"]
+mesh = SubResource("BoxMesh_wall")
+surface_material_override/0 = SubResource("StandardMaterial3D_wall")
+
+[node name="WallWest" type="StaticBody3D" parent="."]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -20, 2, 0)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WallWest"]
+shape = SubResource("BoxShape3D_wall")
+
+[node name="Mesh" type="MeshInstance3D" parent="WallWest"]
+mesh = SubResource("BoxMesh_wall")
+surface_material_override/0 = SubResource("StandardMaterial3D_wall")
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 8)
+
+[node name="Encounter" parent="." instance=ExtResource("3_encounter")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Banner" type="Label" parent="HUD"]
+anchor_right = 1.0
+offset_top = 40.0
+offset_bottom = 120.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.93, 0.7, 1)
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
+
+[node name="Hint" type="Label" parent="HUD"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -46.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.75, 0.73, 0.85, 1)
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1

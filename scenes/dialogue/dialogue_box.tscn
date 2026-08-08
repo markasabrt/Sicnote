@@ -1,0 +1,95 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/dialogue/dialogue_box.gd" id="1_dialogue"]
+[ext_resource type="Script" path="res://scripts/audio/blip_player.gd" id="2_blips"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.04, 0.035, 0.08, 0.94)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.85, 0.8, 0.95, 0.9)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="DialogueBox" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_dialogue")
+
+[node name="Root" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="Root"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = -220.0
+offset_right = -48.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="Margin" type="MarginContainer" parent="Root/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 16
+
+[node name="Lines" type="VBoxContainer" parent="Root/Panel/Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Speaker" type="Label" parent="Root/Panel/Margin/Lines"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.45, 1)
+theme_override_font_sizes/font_size = 20
+text = "Misa"
+
+[node name="Text" type="RichTextLabel" parent="Root/Panel/Margin/Lines"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.96, 0.95, 1, 1)
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = false
+scroll_active = false
+
+[node name="Indicator" type="Label" parent="Root/Panel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -44.0
+offset_top = -40.0
+offset_right = -16.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.45, 1)
+theme_override_font_sizes/font_size = 22
+text = "▼"
+
+[node name="Blips" type="Node" parent="."]
+script = ExtResource("2_blips")
