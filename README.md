@@ -6,8 +6,8 @@ controls everyone else's decisions through an invisible power called tyrannical 
 fast and independent 64th note, stumbles onto the secret and scribes a forbidden protective sigil
 onto her own back to fight back — one that saves her from mind control while slowly killing her.
 
-This project is currently in **pre-production**: design and tech planning, no code yet.
-Built in **Godot 4 / GDScript**, PC only.
+Built in **Godot 4.7 / GDScript**, PC only. Early stage: initial project scaffold plus design
+and tech planning; the first playable vertical slice is scoped but not yet built.
 
 - Design reference: [`docs/design/GAME_DESIGN.md`](docs/design/GAME_DESIGN.md)
 - Tech decisions: [`docs/design/TECH_DECISIONS.md`](docs/design/TECH_DECISIONS.md)

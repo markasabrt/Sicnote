@@ -1,8 +1,10 @@
 # Sicnote
 
-Sicnote is a narrative RPG/rhythm/fighting hybrid, currently in **pre-production**. This
-repository has no source code yet — it currently holds design and tech-decision documentation
-only. **Engine: Godot 4, GDScript, PC only** (see `docs/design/TECH_DECISIONS.md`).
+Sicnote is a narrative RPG/rhythm/fighting hybrid. **Engine: Godot 4.7, GDScript, PC only** (see
+`docs/design/TECH_DECISIONS.md`). The repo currently holds an initial Godot project scaffold
+(`project.godot`, WASD movement input map, Jolt Physics, Forward+ rendering) plus design and
+tech-decision documentation — the confirmed first vertical slice (see below) hasn't been built
+yet.
 
 ## Orientation
 
