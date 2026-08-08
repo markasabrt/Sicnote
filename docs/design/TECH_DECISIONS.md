@@ -28,12 +28,12 @@ not commitments, and shouldn't be treated as final until confirmed.
   note identity even before VO exists.
   - **Blip audio generation:** procedural — synthesized in code from each character's note
     pitch/duration, as a first primitive solution, rather than authored/recorded per character.
-    This is a systems decision even though audio is otherwise the other developer's domain,
-    since it's generated rather than an asset.
+	This is a systems decision even though audio is otherwise the other developer's domain,
+	since it's generated rather than an asset.
   - **Long-term scope:** once real voice acting (friends recording lines) exists, VO replaces
-    the procedural blip for general dialogue. The procedural note-blip system doesn't get
-    thrown away — it narrows to fights and similar non-dialogue contexts where a literal voice
-    line doesn't fit as well.
+	the procedural blip for general dialogue. The procedural note-blip system doesn't get
+	thrown away — it narrows to fights and similar non-dialogue contexts where a literal voice
+	line doesn't fit as well.
 - **Dialogue system:** Custom-built rather than the Dialogic addon. Reasoning: the note-blip
   requirement is bespoke to Sicnote and needs custom code regardless of what runs the dialogue
   box, and Dialogic's main advantage (a visual branching-timeline editor) only pays off once
@@ -48,12 +48,12 @@ not commitments, and shouldn't be treated as final until confirmed.
   - Visualize progression diegetically: the sigil's ink visibly spreads further across Misa's
     back on a status/level-up screen, rather than (or alongside) plain numbers.
   - The same ink total that powers leveling also drives consumption — there's no separate
-    hidden meter. Leveling up *is* progressing toward the ending already planned in
-    `GAME_DESIGN.md`: the more powerful she gets, the closer she is to the sigil consuming her.
+	hidden meter. Leveling up *is* progressing toward the ending already planned in
+	`GAME_DESIGN.md`: the more powerful she gets, the closer she is to the sigil consuming her.
   - **Reveal pacing:** the sigil's visible spread is tied to *level*, not raw ink — ink itself
     accumulates continuously in the background as a percentage toward the next level, but that
-    percentage isn't surfaced to the player as a live-ticking meter. The player only learns
-    their level (and sees the sigil grow) at the moment of level-up, not while it's happening.
+	percentage isn't surfaced to the player as a live-ticking meter. The player only learns
+	their level (and sees the sigil grow) at the moment of level-up, not while it's happening.
     Intent: growth should read as discovered/surprising ("wait, it spread *that* much?") rather
     than something the player watches creep up in real time.
 - **Save system:** saves the full state, not a slice of it — ink total, current level,
@@ -76,14 +76,14 @@ not commitments, and shouldn't be treated as final until confirmed.
   6. Win the fight (90% accuracy threshold, per `GAME_DESIGN.md`).
   7. A short post-fight dialogue exchange using the note-blip system.
   - **Explicit success criterion:** the player should be able to actually *hear* Misa's note
-    during this build — she's a 64th note (per `GAME_DESIGN.md`), so her procedural blip should
-    read as fast, high-chatter audio, distinct from a slower note's blip. If the blip doesn't
-    read as "64th note" on its own, that's a signal the procedural generation needs tuning
-    before it's trusted for other characters.
+	during this build — she's a 64th note (per `GAME_DESIGN.md`), so her procedural blip should
+	read as fast, high-chatter audio, distinct from a slower note's blip. If the blip doesn't
+	read as "64th note" on its own, that's a signal the procedural generation needs tuning
+	before it's trusted for other characters.
   - Nothing beyond this loop needs to exist yet — no full map, no other characters, no leveling
-    payoff, no menus beyond splash/main menu.
+	payoff, no menus beyond splash/main menu.
   - Some assets for this slice already exist (provided by the other developer/designer) rather
-    than needing full placeholders — use what's available; fall back to placeholders per "Asset
+	than needing full placeholders — use what's available; fall back to placeholders per "Asset
     Ownership" below only where something is still missing.
 
 ## Asset Ownership
