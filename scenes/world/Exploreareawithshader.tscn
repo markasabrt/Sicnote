@@ -1,0 +1,165 @@
+[gd_scene format=3 uid="uid://c3lsxe2i66rph"]
+
+[ext_resource type="Script" uid="uid://1xvbqlau6ekc" path="res://scripts/world/explore_area.gd" id="1_explore"]
+[ext_resource type="PackedScene" path="res://scenes/world/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" path="res://scenes/world/encounter.tscn" id="3_encounter"]
+[ext_resource type="Shader" uid="uid://wii6vd6cd7uw" path="res://scenes/world/Exploreareawithshader.gdshader" id="4_tsqtw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sky"]
+sky_top_color = Color(0.1, 0.09, 0.2, 1)
+sky_horizon_color = Color(0.4, 0.22, 0.35, 1)
+ground_bottom_color = Color(0.06, 0.05, 0.1, 1)
+ground_horizon_color = Color(0.22, 0.13, 0.22, 1)
+
+[sub_resource type="Sky" id="Sky_explore"]
+sky_material = SubResource("ProceduralSkyMaterial_sky")
+
+[sub_resource type="Environment" id="Environment_explore"]
+background_mode = 2
+sky = SubResource("Sky_explore")
+ambient_light_source = 3
+ambient_light_energy = 0.6
+tonemap_mode = 2
+fog_enabled = true
+fog_light_color = Color(0.2, 0.12, 0.25, 1)
+fog_density = 0.012
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_floor"]
+size = Vector3(40, 1, 40)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1prxr"]
+render_priority = 0
+shader = ExtResource("4_tsqtw")
+
+[sub_resource type="BoxMesh" id="BoxMesh_floor"]
+material = SubResource("ShaderMaterial_1prxr")
+size = Vector3(40, 1, 40)
+subdivide_width = 100
+subdivide_depth = 100
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wall"]
+size = Vector3(40, 4, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wall"]
+size = Vector3(40, 4, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wall"]
+albedo_color = Color(0.24, 0.16, 0.3, 1)
+roughness = 0.8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pbrs1"]
+render_priority = 0
+shader = ExtResource("4_tsqtw")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uordp"]
+material = SubResource("ShaderMaterial_pbrs1")
+subdivide_width = 32
+subdivide_depth = 32
+
+[node name="ExploreArea" type="Node3D" unique_id=1924886269]
+script = ExtResource("1_explore")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=278065498]
+environment = SubResource("Environment_explore")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=1298898656]
+transform = Transform3D(0.76945627, -0.3485659, 0.5346664, 0.2128166, 0.9304368, 0.3006394, -0.6025247, -0.117483735, 0.7888895, 0, 12, 0)
+light_color = Color(1, 0.9, 0.85, 1)
+light_energy = 1.1
+shadow_enabled = true
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=907101943]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="Floor" unique_id=1129022448]
+shape = SubResource("BoxShape3D_floor")
+
+[node name="Mesh" type="MeshInstance3D" parent="Floor" unique_id=1362501172]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.113012314, 0.1219033, -0.027094841)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_floor")
+
+[node name="WallNorth" type="StaticBody3D" parent="." unique_id=630316001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -20)
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WallNorth" unique_id=111083142]
+shape = SubResource("BoxShape3D_wall")
+
+[node name="Mesh" type="MeshInstance3D" parent="WallNorth" unique_id=791064057]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.023162842, 9.536743e-07, -0.024925232)
+mesh = SubResource("BoxMesh_wall")
+surface_material_override/0 = SubResource("StandardMaterial3D_wall")
+
+[node name="WallSouth" type="StaticBody3D" parent="." unique_id=400907277]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 20)
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WallSouth" unique_id=355762473]
+shape = SubResource("BoxShape3D_wall")
+
+[node name="Mesh" type="MeshInstance3D" parent="WallSouth" unique_id=32821786]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.023162842, 9.536743e-07, -0.024925232)
+mesh = SubResource("BoxMesh_wall")
+surface_material_override/0 = SubResource("StandardMaterial3D_wall")
+
+[node name="WallEast" type="StaticBody3D" parent="." unique_id=1677428590]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 20, 2, 0)
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WallEast" unique_id=2139338959]
+shape = SubResource("BoxShape3D_wall")
+
+[node name="Mesh" type="MeshInstance3D" parent="WallEast" unique_id=574827928]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.024926186, 9.536743e-07, 0.023162842)
+mesh = SubResource("BoxMesh_wall")
+surface_material_override/0 = SubResource("StandardMaterial3D_wall")
+
+[node name="WallWest" type="StaticBody3D" parent="." unique_id=2038432764]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -20, 2, 0)
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape3D" parent="WallWest" unique_id=197811290]
+shape = SubResource("BoxShape3D_wall")
+
+[node name="Mesh" type="MeshInstance3D" parent="WallWest" unique_id=660503522]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.024926186, 9.536743e-07, 0.023162842)
+mesh = SubResource("BoxMesh_wall")
+surface_material_override/0 = SubResource("StandardMaterial3D_wall")
+
+[node name="Player" parent="." unique_id=1428384367 instance=ExtResource("2_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 8)
+
+[node name="Encounter" parent="." unique_id=1122891513 instance=ExtResource("3_encounter")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=2042195371]
+
+[node name="Banner" type="Label" parent="HUD" unique_id=868248088]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 40.0
+offset_bottom = 120.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.93, 0.7, 1)
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
+
+[node name="Hint" type="Label" parent="HUD" unique_id=204574810]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -46.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.75, 0.73, 0.85, 1)
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1013831206]
+transform = Transform3D(1, 0, 0, 0, 0.033685703, -0.9994325, 0, 0.9994325, 0.033685703, 0, 1.3521698, 0)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_uordp")
