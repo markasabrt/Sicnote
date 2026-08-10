@@ -89,3 +89,46 @@ text = "systems & code · this repo
 sprite art, audio & music · second developer
 placeholder art and synthesized audio throughout"
 horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Options" type="Node2D" parent="HUD/CanvasGroup" unique_id=390407754]
+
+[node name="New Game_Continue" type="Button" parent="HUD/CanvasGroup/Options" unique_id=1782472329]
+anchors_preset = -1
+anchor_top = -0.010185185
+anchor_right = 0.11354167
+anchor_bottom = 0.05740741
+offset_left = 119.0
+offset_top = 576.0
+offset_right = 391.0
+offset_bottom = 653.0
+theme_override_font_sizes/font_size = 50
+text = "Start game
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Settings" type="Button" parent="HUD/CanvasGroup/Options" unique_id=774851294]
+anchors_preset = -1
+anchor_top = -0.072222225
+anchor_right = 0.12708333
+offset_left = 115.0
+offset_top = 714.0
+offset_right = 321.0
+offset_bottom = 794.0
+theme_override_font_sizes/font_size = 52
+text = "Options
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Quit" type="Button" parent="HUD/CanvasGroup/Options" unique_id=1402518679]
+anchors_preset = -1
+anchor_right = 0.16041666
+anchor_bottom = 0.09074074
+offset_left = 112.0
+offset_top = 852.0
+offset_right = 250.0
+offset_bottom = 946.0
+theme_override_font_sizes/font_size = 62
+text = "Quit"
+metadata/_edit_use_anchors_ = true
