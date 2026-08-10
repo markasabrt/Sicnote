@@ -1,300 +1,93 @@
 [gd_scene format=3 uid="uid://5xhyeaj5mln1"]
 
-[ext_resource type="Script" uid="uid://bdke8uais7a1a" path="res://scripts/ui/MenuInteraction.gd" id="1_fe2o3"]
-[ext_resource type="Texture2D" uid="uid://dv3xo6bmjh583" path="res://assets/sprites/MenuSprites/Mainmenu/MainMenu1080.png" id="1_sl1te"]
+[ext_resource type="Script" uid="uid://crm6xc4eh2rjp" path="res://scripts/ui/main_menu_3d.gd" id="1_menu"]
+[ext_resource type="Script" uid="uid://b2dg1sllx6pwx" path="res://scripts/audio/blip_player.gd" id="2_blips"]
 
-[sub_resource type="GDScript" id="GDScript_87aya"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sky"]
+sky_top_color = Color(0.12, 0.08, 0.22, 1)
+sky_horizon_color = Color(0.35, 0.16, 0.32, 1)
+ground_bottom_color = Color(0.05, 0.04, 0.09, 1)
+ground_horizon_color = Color(0.2, 0.1, 0.2, 1)
 
-[sub_resource type="Environment" id="Environment_m0uev"]
-glow_enabled = true
-glow_blend_mode = 0
+[sub_resource type="Sky" id="Sky_menu"]
+sky_material = SubResource("ProceduralSkyMaterial_sky")
 
-[sub_resource type="Animation" id="Animation_fe2o3"]
-resource_name = "Egoaway"
-length = 0.98
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasGroup/Press E:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(568, -0.24822551, -72.23362, 0.16666667, 48.5, 613.5, -0.12194204, -30, 0, 0, 537, -0.09746575, 114, 0.06920093, -84, -125, -0.26666665, 8, 0, 0),
-"times": PackedFloat32Array(0.16666667, 0.33333334, 0.59999996, 0.7)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasGroup/Press E:label_settings:outline_size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(4, -0.06666667, -3.5, 0.06666667, 3.5, 18, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.16666667)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasGroup/Press E:label_settings:shadow_size")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-53, -0.06666667, -4, 0.06666666, -254, 37, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.033333335, 0.16666667)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasGroup/Press E:label_settings:stacked_shadow_0/outline_size")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0, 3),
-"points": PackedFloat32Array(21, -0.06666667, -7.5, 0.033333335, -50, 51, -0.25, 0, 0.25, 0, 51, -0.09941011, 0, 0.09941011, 0),
-"times": PackedFloat32Array(0, 0.15833332, 0.79764044)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasGroup/Press E:label_settings:stacked_shadow_1/outline_size")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0, 0, 3),
-"points": PackedFloat32Array(37, -0.06666667, -10.5, 0, -251, 79, -0.25, 0, 0.25, 0, 79, -0.09941011, 0, 0.09941011, 0),
-"times": PackedFloat32Array(0.03333333, 0.15833332, 0.79764044)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasGroup/Press E:label_settings:font_color:a")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(3, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.050669774, 0, 0.050669774, 0),
-"times": PackedFloat32Array(0, 0.5)
-}
-tracks/6/type = "bezier"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CanvasGroup/Press E:label_settings:stacked_shadow_1/color:a")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0.14901961, -0.25, 0, 0.25, 0, 0, -0.06456311, 0.037254903, 0.06456311, -0.037254903),
-"times": PackedFloat32Array(0.16666667, 0.52491915)
-}
-tracks/7/type = "bezier"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("CanvasGroup/Press E:label_settings:stacked_shadow_0/color:a")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0.09803922, -0.25, 0, 0.25, 0, 0, -0.06456311, 0.024509804, 0.06456311, -0.024509804),
-"times": PackedFloat32Array(0.16666667, 0.53317153)
-}
-tracks/8/type = "bezier"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("CanvasGroup/Press E:label_settings:shadow_color:a")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0.09411765, -0.25, 0, 0.25, 0, 0, -0.06456311, 0.023529412, 0.06456311, -0.023529412),
-"times": PackedFloat32Array(0.16666667, 0.53317153)
-}
-
-[sub_resource type="Animation" id="Animation_1g8jr"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasGroup/Press E:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(625, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasGroup/Press E:label_settings:outline_size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(10, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasGroup/Press E:label_settings:shadow_size")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(22, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasGroup/Press E:label_settings:stacked_shadow_0/outline_size")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(37, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasGroup/Press E:label_settings:stacked_shadow_1/outline_size")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasGroup/Press E:label_settings:font_color:a")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/6/type = "bezier"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CanvasGroup/Press E:label_settings:stacked_shadow_1/color:a")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0.14901961, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/7/type = "bezier"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("CanvasGroup/Press E:label_settings:stacked_shadow_0/color:a")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0.09803922, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/8/type = "bezier"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("CanvasGroup/Press E:label_settings:shadow_color:a")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0.09411765, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_m1kxf"]
-_data = {
-&"Egoaway": SubResource("Animation_fe2o3"),
-&"RESET": SubResource("Animation_1g8jr")
-}
-
-[sub_resource type="LabelSettings" id="LabelSettings_m0uev"]
-font_size = 94
-outline_size = 10
-outline_color = Color(1, 1, 1, 0)
-shadow_size = 22
-shadow_color = Color(0.63529414, 0.63529414, 0.63529414, 0.09411765)
-shadow_offset = Vector2(0, 0)
-stacked_shadow_count = 2
-stacked_shadow_0/offset = Vector2(0, 0)
-stacked_shadow_0/color = Color(1, 1, 1, 0.09803922)
-stacked_shadow_0/outline_size = 37
-stacked_shadow_1/color = Color(1, 1, 1, 0.14901961)
+[sub_resource type="Environment" id="Environment_menu"]
+background_mode = 2
+sky = SubResource("Sky_menu")
+ambient_light_source = 3
+tonemap_mode = 2
 
 [node name="MainMenu" type="Node3D" unique_id=437543307]
-script = SubResource("GDScript_87aya")
+script = ExtResource("1_menu")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1127432725]
-environment = SubResource("Environment_m0uev")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=75055797]
+environment = SubResource("Environment_menu")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1723019558]
-position = Vector2(960, 540)
+[node name="Camera3D" type="Camera3D" parent="." unique_id=154842023]
+transform = Transform3D(1, 0, 0, 0, 0.985, 0.174, 0, -0.174, 0.985, 0, 0.9, 4.6)
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=712664547]
+transform = Transform3D(0.87, -0.31, 0.38, 0, 0.77, 0.63, -0.49, -0.55, 0.67, 2, 4, 3)
+light_energy = 1.3
+shadow_enabled = true
+
+[node name="Pivot" type="Node3D" parent="." unique_id=742376982]
+
+[node name="Blips" type="Node" parent="." unique_id=143169670]
+script = ExtResource("2_blips")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=796685824]
-script = ExtResource("1_fe2o3")
 
-[node name="TextureRect" type="TextureRect" parent="HUD" unique_id=1202461451]
-anchors_preset = -1
-anchor_left = 0.0016754909
-anchor_right = 0.027435558
-anchor_bottom = 0.008298634
-offset_left = -3.2169425
-offset_right = 1867.3237
-offset_bottom = 1071.0375
-texture = ExtResource("1_sl1te")
-metadata/_edit_use_anchors_ = true
-metadata/_aseprite_wizard_interface_config_ = {
-"layer_section": false,
-"pending_changes": {
-"convert_fps_field": 60.0,
-"convert_ms_field": 16.0,
-"convert_to_fps": false,
-"embed_tex": true,
-"i_mode": 0,
-"keep_anim_length": false,
-"layers": [],
-"o_ex_p": "",
-"o_folder": "",
-"o_name": "",
-"only_visible": false,
-"player": "",
-"scale": "1.0",
-"slice": "",
-"source": "",
-"source_uid": -1
-}
-}
+[node name="Title" type="Label" parent="HUD" unique_id=1674440411]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 36.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.98, 0.94, 0.9, 1)
+theme_override_font_sizes/font_size = 48
+text = "SICNOTE"
+horizontal_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD" unique_id=992766974]
-libraries/ = SubResource("AnimationLibrary_m1kxf")
+[node name="Selection" type="Label" parent="HUD" unique_id=1488451584]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -140.0
+offset_bottom = -90.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 34
+text = "Start"
+horizontal_alignment = 1
 
-[node name="CanvasGroup" type="CanvasGroup" parent="HUD" unique_id=504079060]
+[node name="Hint" type="Label" parent="HUD" unique_id=1261334097]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -70.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.7, 0.68, 0.8, 1)
+theme_override_font_sizes/font_size = 18
+text = "drag to turn · Enter to choose"
+horizontal_alignment = 1
 
-[node name="Press E" type="Label" parent="HUD/CanvasGroup" unique_id=751539446]
-self_modulate = Color(1.6197081, 1.6197081, 1.6197081, 1)
-anchors_preset = -1
-anchor_left = -0.022916667
-anchor_right = -0.1015625
-anchor_bottom = -0.008333334
-offset_left = 583.0
-offset_top = 625.0
-offset_right = 1365.9998
-offset_bottom = 754.00244
-theme_override_font_sizes/font_size = 83
-text = "Press E to begin"
-label_settings = SubResource("LabelSettings_m0uev")
+[node name="Credits" type="Label" parent="HUD" unique_id=1751719822]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 110.0
+offset_bottom = 190.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.8, 0.78, 0.9, 1)
+theme_override_font_sizes/font_size = 18
+text = "systems & code · this repo
+sprite art, audio & music · second developer
+placeholder art and synthesized audio throughout"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
