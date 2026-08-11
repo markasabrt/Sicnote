@@ -1,13 +1,13 @@
 extends Node
 
 var PressEOn: bool 
-@onready var PressE = $"CanvasGroup/Press E" #this loads the node u want in a variable
-@onready var AnimationP = $AnimationPlayer 
-@onready var Options = $CanvasGroup/Options
+@onready var PressE = $"Press E" #this loads the node u want in a variable
+@onready var AnimationP = $AnimationPlayer
+#@onready var Options = $Control/PanelContainer/Options
 
 func _ready() -> void:
 	PressEOn = false
-	Options.visible = false
+	#Options.visible = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void: 
 	if Input.is_action_just_pressed("interact", true): #ok so player just pressed e and they are allowed to pass
@@ -17,6 +17,6 @@ func _process(delta: float) -> void:
 				AnimationP.play("Egoaway")#plays the animation
 				
 				await AnimationP.animation_finished #waits for the animation to finish
-				Options.visible = true#makes the options visible
+				#Options.visible = true#makes the options visible
 	pass
 	
