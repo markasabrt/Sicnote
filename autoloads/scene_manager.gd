@@ -1,5 +1,5 @@
 extends Node
-## Single place that owns scene flow: splash -> menu -> explore -> fight ->
+## Single place that owns scene flow: menu -> explore -> fight ->
 ## post-fight dialogue -> explore.
 ##
 ## Scenes never call change_scene_to_file() themselves; they call
@@ -7,8 +7,8 @@ extends Node
 ## the fade, and the hand-off payload all live in one file.
 
 const SCENES := {
-	"splash": "res://scenes/ui/splash_screen.tscn",
 	"menu": "res://scenes/ui/main_menu.tscn",
+	"menu2": "res://scenes/ui/main_menu_2.tscn",
 	"explore": "res://scenes/world/explore_area.tscn",
 	"fight": "res://scenes/fight/fight_scene.tscn",
 }
