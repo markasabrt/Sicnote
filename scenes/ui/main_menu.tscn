@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bdke8uais7a1a" path="res://scripts/ui/MenuInteraction.gd" id="1_fe2o3"]
 [ext_resource type="Texture2D" uid="uid://dv3xo6bmjh583" path="res://assets/sprites/MenuSprites/Mainmenu/MainMenu1080.png" id="1_sl1te"]
+[ext_resource type="Script" path="res://scripts/ui/SineWave.gd" id="2_sinewv"]
 
 [sub_resource type="GDScript" id="GDScript_87aya"]
 
@@ -301,3 +302,6 @@ metadata/_aseprite_wizard_interface_config_ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HUD" unique_id=992766974]
 libraries/ = SubResource("AnimationLibrary_m1kxf")
+
+[node name="SineWave" type="Node2D" parent="HUD" unique_id=1837402951]
+script = ExtResource("2_sinewv")
