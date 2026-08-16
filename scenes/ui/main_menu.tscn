@@ -2,27 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bdke8uais7a1a" path="res://scripts/ui/MenuInteraction.gd" id="1_fe2o3"]
 [ext_resource type="Texture2D" uid="uid://dv3xo6bmjh583" path="res://assets/sprites/MenuSprites/Mainmenu/MainMenu1080.png" id="1_sl1te"]
-[ext_resource type="Script" path="res://scripts/ui/SineWave.gd" id="2_sinewv"]
+[ext_resource type="Script" uid="uid://brkq61y8wdgs4" path="res://scripts/ui/SineWave.gd" id="2_sinewv"]
+[ext_resource type="FontFile" uid="uid://c74fjb1v2ac3t" path="res://assets/fonts/font/static/Grenze-Italic.ttf" id="4_m1kxf"]
 
 [sub_resource type="GDScript" id="GDScript_87aya"]
-
-[sub_resource type="Environment" id="Environment_m0uev"]
-glow_enabled = true
-glow_blend_mode = 0
-
-[sub_resource type="LabelSettings" id="LabelSettings_m0uev"]
-font_size = 94
-outline_size = 10
-outline_color = Color(1, 1, 1, 0)
-shadow_size = 22
-shadow_color = Color(0.63529414, 0.63529414, 0.63529414, 0.09411765)
-shadow_offset = Vector2(0, 0)
-stacked_shadow_count = 2
-stacked_shadow_0/offset = Vector2(0, 0)
-stacked_shadow_0/color = Color(1, 1, 1, 0.09803922)
-stacked_shadow_0/outline_size = 37
-stacked_shadow_1/offset = Vector2(0, 0)
-stacked_shadow_1/color = Color(1, 1, 1, 0.14901961)
 
 [sub_resource type="Animation" id="Animation_fe2o3"]
 resource_name = "Egoaway"
@@ -235,33 +218,29 @@ _data = {
 &"RESET": SubResource("Animation_1g8jr")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_m0uev"]
+font = ExtResource("4_m1kxf")
+font_size = 94
+outline_size = 10
+outline_color = Color(1, 1, 1, 0)
+shadow_size = 22
+shadow_color = Color(0.63529414, 0.63529414, 0.63529414, 0.09411765)
+shadow_offset = Vector2(0, 0)
+stacked_shadow_count = 2
+stacked_shadow_0/offset = Vector2(0, 0)
+stacked_shadow_0/color = Color(1, 1, 1, 0.09803922)
+stacked_shadow_0/outline_size = 37
+stacked_shadow_1/offset = Vector2(0, 0)
+stacked_shadow_1/color = Color(1, 1, 1, 0.14901961)
+
 [node name="MainMenu" type="Node3D" unique_id=437543307]
 script = SubResource("GDScript_87aya")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1127432725]
-environment = SubResource("Environment_m0uev")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1723019558]
 position = Vector2(960, 540)
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=796685824]
 script = ExtResource("1_fe2o3")
-
-[node name="Press E" type="Label" parent="HUD" unique_id=751539446]
-self_modulate = Color(1.6197081, 1.6197081, 1.6197081, 1)
-custom_minimum_size = Vector2(800, 30)
-offset_top = 625.0
-offset_right = 800.0
-offset_bottom = 754.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 83
-text = "Press E to begin"
-label_settings = SubResource("LabelSettings_m0uev")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-metadata/_edit_use_anchors_ = true
 
 [node name="BGE" type="Control" parent="HUD" unique_id=1667200587]
 layout_mode = 3
@@ -305,3 +284,25 @@ libraries/ = SubResource("AnimationLibrary_m1kxf")
 
 [node name="SineWave" type="Node2D" parent="HUD" unique_id=1837402951]
 script = ExtResource("2_sinewv")
+
+[node name="Press E" type="Label" parent="HUD" unique_id=751539446]
+self_modulate = Color(1.6197081, 1.6197081, 1.6197081, 1)
+custom_minimum_size = Vector2(800, 30)
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.626
+offset_left = -400.0
+offset_top = -23.0
+offset_right = 400.0
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 83
+text = "Press E to begin"
+label_settings = SubResource("LabelSettings_m0uev")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true

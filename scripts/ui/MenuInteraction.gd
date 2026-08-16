@@ -18,6 +18,7 @@ func _process(delta: float) -> void:
 				PressEOn = true #boom its on now so it wont turn on again.
 				#PressE.visible = false; #makes it invisible, no need to call it now though cuz the animation fades it out
 				AnimationP.play("Egoaway")#plays the animation
+				await AnimationP.animation_finished
 
 				var shatter := GlassShatter.new()
 				shatter.current_texture = CURRENT_ART
