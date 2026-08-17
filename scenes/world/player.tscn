@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene format=3 uid="uid://bj7f3hq5mtfad"]
 
-[ext_resource type="Script" path="res://scripts/world/player_explorer.gd" id="1_player"]
+[ext_resource type="Script" uid="uid://b04qn1birmws6" path="res://scripts/world/player_explorer.gd" id="1_player"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_body"]
 radius = 0.4
@@ -17,35 +17,33 @@ roughness = 0.6
 [sub_resource type="BoxMesh" id="BoxMesh_facing"]
 size = Vector3(0.18, 0.18, 0.35)
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" unique_id=1463524838]
 collision_layer = 2
-collision_mask = 1
 script = ExtResource("1_player")
 
-[node name="Collision" type="CollisionShape3D" parent="."]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1208464743]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_body")
 
-[node name="Body" type="Node3D" parent="."]
+[node name="Body" type="Node3D" parent="." unique_id=353741604]
 
-[node name="Mesh" type="MeshInstance3D" parent="Body"]
+[node name="Mesh" type="MeshInstance3D" parent="Body" unique_id=385982748]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 mesh = SubResource("CapsuleMesh_body")
 surface_material_override/0 = SubResource("StandardMaterial3D_misa")
 
-[node name="Facing" type="MeshInstance3D" parent="Body"]
+[node name="Facing" type="MeshInstance3D" parent="Body" unique_id=1700303297]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, -0.42)
 mesh = SubResource("BoxMesh_facing")
 surface_material_override/0 = SubResource("StandardMaterial3D_misa")
 
-[node name="CamPivot" type="Node3D" parent="."]
+[node name="CamPivot" type="Node3D" parent="." unique_id=572587324]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45, 0)
 
-[node name="SpringArm3D" type="SpringArm3D" parent="CamPivot"]
-collision_mask = 1
+[node name="SpringArm3D" type="SpringArm3D" parent="CamPivot" unique_id=250993249]
 spring_length = 4.5
 margin = 0.3
 
-[node name="Camera3D" type="Camera3D" parent="CamPivot/SpringArm3D"]
+[node name="Camera3D" type="Camera3D" parent="CamPivot/SpringArm3D" unique_id=1512588046]
 current = true
 fov = 70.0

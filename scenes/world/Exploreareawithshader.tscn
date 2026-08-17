@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c3lsxe2i66rph"]
 
 [ext_resource type="Script" uid="uid://1xvbqlau6ekc" path="res://scripts/world/explore_area.gd" id="1_explore"]
-[ext_resource type="PackedScene" path="res://scenes/world/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://bj7f3hq5mtfad" path="res://scenes/world/player.tscn" id="2_player"]
 [ext_resource type="PackedScene" path="res://scenes/world/encounter.tscn" id="3_encounter"]
 [ext_resource type="Shader" uid="uid://wii6vd6cd7uw" path="res://scenes/world/Exploreareawithshader.gdshader" id="4_tsqtw"]
 
@@ -27,12 +27,7 @@ fog_density = 0.012
 [sub_resource type="BoxShape3D" id="BoxShape3D_floor"]
 size = Vector3(40, 1, 40)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1prxr"]
-render_priority = 0
-shader = ExtResource("4_tsqtw")
-
 [sub_resource type="BoxMesh" id="BoxMesh_floor"]
-material = SubResource("ShaderMaterial_1prxr")
 size = Vector3(40, 1, 40)
 subdivide_width = 100
 subdivide_depth = 100
