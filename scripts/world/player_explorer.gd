@@ -1,23 +1,17 @@
 class_name PlayerExplorer
 extends CharacterBody3D
-## Third-person exploration controller for the 3D scenes.
-##
-## Keyboard and mouse are the designed-for input (TECH_DECISIONS.md), and every
-## binding goes through the Input Map rather than raw keycodes so controller
-## support later isn't a rewrite.
-##
-## The capsule mesh is a placeholder — the real Misa is a billboarded 2D sprite
-## (GAME_DESIGN.md, "Production Approach"), which drops in as a sibling node
-## without touching this script.
+@export var jump_g_multiplier: float = 1.7
+@export var jump_decay: float = .55
+@export var jump_velocity: float = 10 
 @export var active_rate: float = 0
 @export var target_speed: float = 0
 @export var sprint_timer: float = 0
 @export var current_speed: float = 0
 @export var move_speed: float = 5.5
 @export var run_speed: float = 8.5
-@export var sprint_speed: float = 10.5
-@export var acceleration: float = 12.0
-@export var deceleration: float = 20
+@export var sprint_speed: float = 11.5
+@export var acceleration: float = 15.0
+@export var deceleration: float = 17
 @export var mouse_sensitivity: float = 0.0032
 @export var min_pitch_deg: float = -40.0
 @export var max_pitch_deg: float = 25.0
@@ -60,8 +54,19 @@ func _physics_process(delta: float) -> void:
 		velocity.y -= _gravity * delta
 	else:
 		velocity.y = 0.0
-	if Input.is_action_pressed("Run"):
 		
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		_gravity *= jump_g_multiplier
+		jump_velocity == sqrt(jump_g_multiplier) 
+		velocity.y = jump_velocity
+	elif velocity.y == 0: 
+		_gravity = 9.8  
+	if Input.is_action_just_released("jump") and velocity.y > 0:
+		velocity.y *= jump_decay
+		
+	
+		
+	if Input.is_action_pressed("Run"):
 		target_speed = run_speed
 		sprint_timer += delta
 		if sprint_timer >= 3:

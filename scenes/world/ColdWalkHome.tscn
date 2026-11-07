@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://n6107mskcbin"]
+
+[ext_resource type="PackedScene" uid="uid://cfg3ckqt3r5rj" path="res://scenes/Systems/Subview.tscn" id="1_adsat"]
+[ext_resource type="PackedScene" uid="uid://bj7f3hq5mtfad" path="res://scenes/world/player.tscn" id="1_pd3dd"]
+
+[sub_resource type="Environment" id="Environment_cm2qf"]
+background_mode = 2
+background_color = Color(0.03499579, 0.008236495, 0.0010864313, 1)
+background_energy_multiplier = 2.98
+ambient_light_color = Color(0.91067904, 0.8249744, 0.771449, 1)
+ssr_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.2516
+volumetric_fog_albedo = Color(0, 0, 0, 1)
+volumetric_fog_emission = Color(0.13319641, 0.13319641, 0.13319638, 1)
+volumetric_fog_anisotropy = 0.31
+volumetric_fog_length = 88.6
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_m0uev"]
+exposure_multiplier = 1.588
+dof_blur_far_distance = 54.85
+dof_blur_far_transition = 44.2
+dof_blur_amount = 0.42
+
+[node name="ColdWalkHome" type="Node3D" unique_id=428125559]
+
+[node name="Subview" parent="." unique_id=76530552 instance=ExtResource("1_adsat")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" parent="Subview/SubViewportContainer" parent_id_path=PackedInt32Array(76530552, 1208298637) index="0" unique_id=1390782357]
+size = Vector2i(960, 540)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Subview/SubViewportContainer/SubViewport/Node3D" parent_id_path=PackedInt32Array(76530552, 2047372546) index="0" unique_id=336385522]
+environment = SubResource("Environment_cm2qf")
+camera_attributes = SubResource("CameraAttributesPractical_m0uev")
+
+[node name="environment" type="Node3D" parent="Subview/SubViewportContainer/SubViewport/Node3D" parent_id_path=PackedInt32Array(76530552, 2047372546) index="1" unique_id=1423141566]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06271839, -1.4346756, 55.376778)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Subview/SubViewportContainer/SubViewport/Node3D/environment" unique_id=1167847040]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6197128, 0, 0)
+use_collision = true
+size = Vector3(5.399826, 1, 131.2485)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Subview/SubViewportContainer/SubViewport/Node3D/environment" unique_id=2070020280]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.145585, 0.47145343, 1.186264)
+use_collision = true
+size = Vector3(21.996094, 1, 134.13919)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Subview/SubViewportContainer/SubViewport/Node3D/environment" unique_id=1714815111]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.620714, 0.94103813, 16.95578)
+use_collision = true
+size = Vector3(1, 1, 164.43768)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Subview/SubViewportContainer/SubViewport/Node3D/environment" unique_id=708545823]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.698719, 7.5522137, 16.95578)
+use_collision = true
+size = Vector3(1, 14.222351, 164.43768)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Subview/SubViewportContainer/SubViewport/Node3D/environment" unique_id=909145127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.627434, 7.5522137, 16.95578)
+use_collision = true
+size = Vector3(1, 14.222351, 164.43768)
+
+[node name="Player" parent="Subview/SubViewportContainer/SubViewport/Node3D" parent_id_path=PackedInt32Array(76530552, 2047372546) index="2" unique_id=1463524838 instance=ExtResource("1_pd3dd")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Subview/SubViewportContainer/SubViewport/Node3D" parent_id_path=PackedInt32Array(76530552, 2047372546) index="3" unique_id=1754000077]
+transform = Transform3D(1.1743907e-07, -0.5778576, 0.8161376, 1, -4.371139e-08, -1.7484555e-07, 1.3671034e-07, 0.8161376, 0.5778576, 0, 0, 0)
+light_color = Color(0.77, 0.65911996, 0.35419998, 1)
+light_volumetric_fog_energy = 8.098
+light_angular_distance = 10.1
+
+[editable path="Subview"]
+[editable path="Subview/SubViewportContainer/SubViewport/Node3D/Player"]
